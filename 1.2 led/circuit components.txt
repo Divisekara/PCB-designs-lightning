@@ -1,0 +1,8 @@
+2n2222 transistors 2
+33k 2
+100uf 16v electrolytic caps 2
+5mm leds 2
+
+
+
+

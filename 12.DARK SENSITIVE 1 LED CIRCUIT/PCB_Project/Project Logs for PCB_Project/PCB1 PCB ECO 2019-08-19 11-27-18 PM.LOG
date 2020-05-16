@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=Net100K PRESET_1 Pin=100K PRESET-1
+Change Component Designator: OldDesignator=1K NewDesignator=1K 1
+Change Component Designator: OldDesignator=1K NewDesignator=1K 2
+Added Pin To Net: NetName=Net100K PRESET_1 Pin=100K PRESET-3
+Change Net Name : Old Net Name=Net1K_2 New Net Name=Net1K 1_2
+Change Net Name : Old Net Name=Net100K PRESET_1 New Net Name=Net100K PRESET_2
+Added Pin To Net: NetName=Net1K 1_1 Pin=1K 1-1
+Added Pin To Net: NetName=Net1K 1_1 Pin=100K PRESET-1
+Added Net: Name=Net1K 1_1
+Added Pin To Net: NetName=Net1K 2_1 Pin=1K 2-1
+Added Pin To Net: NetName=Net1K 2_1 Pin=LED-1
+Added Net: Name=Net1K 2_1
+Added Member To Class: ClassName=Sheet1 Member=Component 1K 2 Res1
+Added Room: Name=Sheet1

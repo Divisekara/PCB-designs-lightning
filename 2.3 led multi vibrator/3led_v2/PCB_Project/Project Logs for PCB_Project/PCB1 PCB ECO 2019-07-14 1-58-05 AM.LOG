@@ -1,0 +1,19 @@
+Change Component Designator: OldDesignator=Q1 NewDesignator=Q2
+Change Component Designator: OldDesignator=Q2 NewDesignator=Q3
+Change Component Designator: OldDesignator=Q3 NewDesignator=Q1
+Change Component Designator: OldDesignator=R1 NewDesignator=R2
+Change Component Designator: OldDesignator=R2 NewDesignator=R3
+Change Component Designator: OldDesignator=R3 NewDesignator=R1
+Added Component: Designator=LED4(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Sheet1 Member=Component LED4 L-53GD
+Added Room: Name=Sheet1

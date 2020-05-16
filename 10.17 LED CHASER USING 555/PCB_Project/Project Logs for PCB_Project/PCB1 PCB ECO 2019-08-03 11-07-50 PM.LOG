@@ -1,0 +1,197 @@
+Removed Pin From Net: NetName=Net3_1 Pin=3-1
+Removed Pin From Net: NetName=Net5_1 Pin=5-1
+Removed Pin From Net: NetName=Net7_1 Pin=7-1
+Removed Pin From Net: NetName=Net9_1 Pin=9-1
+Removed Pin From Net: NetName=Net3_1 Pin=CD4017BE-4
+Removed Pin From Net: NetName=Net7_1 Pin=CD4017BE-5
+Removed Pin From Net: NetName=Net9_1 Pin=CD4017BE-9
+Removed Pin From Net: NetName=Net5_1 Pin=CD4017BE-10
+Removed Member From Class: ClassName=Sheet1 Member=LED1
+Removed Member From Class: ClassName=Sheet1 Member=LED2
+Removed Member From Class: ClassName=Sheet1 Member=R1
+Change Component Designator: OldDesignator=2 NewDesignator=3
+Change Component Designator: OldDesignator=3 NewDesignator=5
+Change Component Designator: OldDesignator=4 NewDesignator=7
+Change Component Designator: OldDesignator=5 NewDesignator=9
+Change Component Designator: OldDesignator=6 NewDesignator=11
+Change Component Designator: OldDesignator=7 NewDesignator=13
+Change Component Designator: OldDesignator=8 NewDesignator=15
+Change Component Designator: OldDesignator=9 NewDesignator=17
+Change Component Designator: OldDesignator=10 NewDesignator=19
+Change Component Designator: OldDesignator=120 NewDesignator=60
+Added Component: Designator=2(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=4(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=6(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=8(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=10(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=12(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=14(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=16(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=18(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=20(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Component: Designator=LED11(L-53GD)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Allied_Number"; Value = "70424261"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Allied Price/Stock"; Value = "http://www.alliedelec.com/kingbright-l-53gd/70424261/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://docs-emea.rs-online.com/webdocs/151e/0900766b8151e408.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Kingbright"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "L-53GD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.com/Search/Refine.aspx?Keyword=N%2FA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Part Number"; Value = "2286004A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Price/Stock"; Value = "http://uk.rs-online.com/web/p/products/2286004A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net1_1 Pin=2-1
+Added Pin To Net: NetName=Net1_2 Pin=2-2
+Added Pin To Net: NetName=Net3_1 Pin=3-1
+Added Pin To Net: NetName=Net3_1 Pin=4-1
+Added Pin To Net: NetName=Net1_2 Pin=4-2
+Added Pin To Net: NetName=Net5_1 Pin=5-1
+Added Pin To Net: NetName=Net5_1 Pin=6-1
+Added Pin To Net: NetName=Net1_2 Pin=6-2
+Added Pin To Net: NetName=Net7_1 Pin=7-1
+Added Pin To Net: NetName=Net7_1 Pin=8-1
+Added Pin To Net: NetName=Net1_2 Pin=8-2
+Added Pin To Net: NetName=Net9_1 Pin=9-1
+Added Pin To Net: NetName=Net9_1 Pin=10-1
+Added Pin To Net: NetName=Net1_2 Pin=10-2
+Added Pin To Net: NetName=Net1_2 Pin=12-2
+Added Pin To Net: NetName=Net1_2 Pin=14-2
+Added Pin To Net: NetName=Net1_2 Pin=16-2
+Added Pin To Net: NetName=Net1_2 Pin=18-2
+Added Pin To Net: NetName=Net1_2 Pin=20-2
+Added Pin To Net: NetName=Net3_1 Pin=CD4017BE-2
+Added Pin To Net: NetName=Net5_1 Pin=CD4017BE-4
+Added Pin To Net: NetName=Net7_1 Pin=CD4017BE-7
+Added Pin To Net: NetName=Net9_1 Pin=CD4017BE-10
+Added Pin To Net: NetName=Net11_1 Pin=11-1
+Added Pin To Net: NetName=Net11_1 Pin=12-1
+Added Pin To Net: NetName=Net11_1 Pin=CD4017BE-1
+Added Net: Name=Net11_1
+Added Pin To Net: NetName=Net13_1 Pin=13-1
+Added Pin To Net: NetName=Net13_1 Pin=14-1
+Added Pin To Net: NetName=Net13_1 Pin=CD4017BE-5
+Added Net: Name=Net13_1
+Added Pin To Net: NetName=Net15_1 Pin=15-1
+Added Pin To Net: NetName=Net15_1 Pin=16-1
+Added Pin To Net: NetName=Net15_1 Pin=CD4017BE-6
+Added Net: Name=Net15_1
+Added Pin To Net: NetName=Net17_1 Pin=17-1
+Added Pin To Net: NetName=Net17_1 Pin=18-1
+Added Pin To Net: NetName=Net17_1 Pin=CD4017BE-9
+Added Net: Name=Net17_1
+Added Pin To Net: NetName=Net19_1 Pin=19-1
+Added Pin To Net: NetName=Net19_1 Pin=20-1
+Added Pin To Net: NetName=Net19_1 Pin=CD4017BE-11
+Added Net: Name=Net19_1
+Added Member To Class: ClassName=Sheet1 Member=Component 11 6
+Added Member To Class: ClassName=Sheet1 Member=Component 12 1
+Added Member To Class: ClassName=Sheet1 Member=Component 13 7
+Added Member To Class: ClassName=Sheet1 Member=Component 14 1
+Added Member To Class: ClassName=Sheet1 Member=Component 15 8
+Added Member To Class: ClassName=Sheet1 Member=Component 16 1
+Added Member To Class: ClassName=Sheet1 Member=Component 17 9
+Added Member To Class: ClassName=Sheet1 Member=Component 18 1
+Added Member To Class: ClassName=Sheet1 Member=Component 19 10
+Added Member To Class: ClassName=Sheet1 Member=Component 20 1
+Added Member To Class: ClassName=Sheet1 Member=Component LED11 L-53GD
+Added Room: Name=Sheet1

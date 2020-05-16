@@ -1,0 +1,657 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD17\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2019-08-26</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:32:49 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc" class="file"><acronym title="C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc">C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">107</td></tr>
+</table>
+</td>
+</table><a name="IDHETWQCUW4UNVNT2MAHZ5XXTFICGP2GUF2GOAQTND3OIDYA0XO2LJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5Z2C44CHY4LJIMOEG3UHELAHMIBH430C5KIP2JP2IKELJSZAOVXI">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ2CKUZWNGBPJODD43VOVIAFDYDC45GR5FULQ5VCDEVEISOLAIHMJ">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNP2IL5DREB4WL4D13PHY3DO4FDZRWK3IKLUKKRP3U22QKVVJUJLJ">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJKLOWDAV1DG1DKULU1NTMCNLICK1SKCFY5XN33NGYBKIPHKIRCSH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1MDD4WQID34BCNLDLT05DB54IFLFEWVEXXSXC2KSU3I4NZBMD3SN">Width Constraint (Min=0.254mm) (Max=0.762mm) (Preferred=0.508mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDV4RXIVMQA5AVLTVMHC3VOFX31B0XGRILUIYUPRLBKLPTLQLXTC1D">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZPZKUOS1CLXBCHKBZI1YPDTDYLXCEL0GE3GUGBNTCXEOJ5VHMVRB">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJFCZHLCVOZZONYFORQUQDT4NFB1QSGDCL0QWVUMCCUGJA0JHQKAF">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCII5MJ440VVZGKQFGY1NA4CK1M4KCBXDGOHBBVFMF4UFTTONE50J">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5YTOI5LQMYZP0ETR0TQYVU4KEFWFNVWCFABMJBGJI31TYLI1UQ">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">66</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYEPNGSH0WMFCJAGUYUPWL4AEZH3YJTIAZ0G3VEH50QXTKMOJPIFI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">41</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGYOSWS5X0QUFHDFJTJEKCUYIPLIKUAM00VZU4PJLHNODC4HWOIPK">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0G2IYSANXIA2EF022NBJSYW5WKNXYPXSBDU5MJF1RFI5FJAYE1KF">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">107</td>
+</tr>
+</table><br><a name="ID5YTOI5LQMYZP0ETR0TQYVU4KEFWFNVWCFABMJBGJI31TYLI1UQ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.234mil|Location2.X=1269.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.234mil|Location2.X=1269.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (9.144mm,23.242mm) on Top Overlay And Pad BC547 1-2(7.239mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.234mil|Location2.X=1270.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.234mil|Location2.X=1270.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (9.144mm,23.24mm) on Top Overlay And Pad BC547 1-2(7.239mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1453.234mil|Location2.X=1464.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1453.234mil|Location2.X=1464.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (14.097mm,23.242mm) on Top Overlay And Pad BC547 2-2(12.192mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1453.234mil|Location2.X=1465.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1453.234mil|Location2.X=1465.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (14.097mm,23.24mm) on Top Overlay And Pad BC547 2-2(12.192mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1653.234mil|Location2.X=1664.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1653.234mil|Location2.X=1664.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (19.177mm,23.242mm) on Top Overlay And Pad BC547 3-2(17.272mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1653.234mil|Location2.X=1665.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1653.234mil|Location2.X=1665.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (19.177mm,23.24mm) on Top Overlay And Pad BC547 3-2(17.272mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1843.234mil|Location2.X=1854.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1843.234mil|Location2.X=1854.484mil|Location1.Y=1934.97mil|Location2.Y=1946.22mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (24.003mm,23.242mm) on Top Overlay And Pad BC 547 4-2(22.098mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1843.234mil|Location2.X=1855.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1843.234mil|Location2.X=1855.329mil|Location1.Y=1883.78mil|Location2.Y=1895.03mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Arc (24.003mm,23.24mm) on Top Overlay And Pad BC 547 4-2(22.098mm,23.241mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.339mil|Location2.X=1460.589mil|Location1.Y=1393.728mil|Location2.Y=1404.978mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.339mil|Location2.X=1460.589mil|Location1.Y=1393.728mil|Location2.Y=1404.978mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.012mm &lt; 0.254mm) Between Text "LDR" (11.557mm,10.287mm) on Top Overlay And Pad LDR-2(11.43mm,9.398mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.012mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1536.127mil|Location2.X=1549.562mil|Location1.Y=1393.369mil|Location2.Y=1404.619mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1536.127mil|Location2.X=1549.562mil|Location1.Y=1393.369mil|Location2.Y=1404.619mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.031mm &lt; 0.254mm) Between Text "LDR" (11.557mm,10.287mm) on Top Overlay And Pad LDR-1(13.97mm,9.398mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.031mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (9.398mm,25.495mm)(9.398mm,25.896mm) on Top Overlay And Pad BC547 1-3(9.144mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (9.398mm,22.955mm)(9.398mm,23.527mm) on Top Overlay And Pad BC547 1-3(9.144mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.302mil|Location2.X=1395.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.302mil|Location2.X=1395.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (10.668mm,21.717mm) on Top Overlay And Pad BC547 1-3(9.144mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (9.398mm,20.586mm)(9.398mm,20.987mm) on Top Overlay And Pad BC547 1-1(9.144mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1362.566mil|Location2.X=1376.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (9.398mm,22.955mm)(9.398mm,23.527mm) on Top Overlay And Pad BC547 1-1(9.144mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.305mil|Location2.X=1395.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.305mil|Location2.X=1395.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (10.668mm,21.717mm) on Top Overlay And Pad BC547 1-1(9.144mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (14.351mm,25.495mm)(14.351mm,25.896mm) on Top Overlay And Pad BC547 2-3(14.097mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (14.351mm,22.955mm)(14.351mm,23.527mm) on Top Overlay And Pad BC547 2-3(14.097mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.302mil|Location2.X=1590.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.302mil|Location2.X=1590.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (15.621mm,21.717mm) on Top Overlay And Pad BC547 2-3(14.097mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (14.351mm,20.586mm)(14.351mm,20.987mm) on Top Overlay And Pad BC547 2-1(14.097mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.566mil|Location2.X=1571.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (14.351mm,22.955mm)(14.351mm,23.527mm) on Top Overlay And Pad BC547 2-1(14.097mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.305mil|Location2.X=1590.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.305mil|Location2.X=1590.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (15.621mm,21.717mm) on Top Overlay And Pad BC547 2-1(14.097mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (19.431mm,25.495mm)(19.431mm,25.896mm) on Top Overlay And Pad BC547 3-3(19.177mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (19.431mm,22.955mm)(19.431mm,23.527mm) on Top Overlay And Pad BC547 3-3(19.177mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.302mil|Location2.X=1790.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.302mil|Location2.X=1790.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (20.701mm,21.717mm) on Top Overlay And Pad BC547 3-3(19.177mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (19.431mm,20.586mm)(19.431mm,20.987mm) on Top Overlay And Pad BC547 3-1(19.177mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.566mil|Location2.X=1771.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (19.431mm,22.955mm)(19.431mm,23.527mm) on Top Overlay And Pad BC547 3-1(19.177mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.305mil|Location2.X=1790.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.305mil|Location2.X=1790.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (20.701mm,21.717mm) on Top Overlay And Pad BC547 3-1(19.177mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961.511mil|Location1.Y=1991.625mil|Location2.Y=2002.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (24.257mm,25.495mm)(24.257mm,25.896mm) on Top Overlay And Pad BC 547 4-3(24.003mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961mil|Location1.Y=1927.125mil|Location2.Y=1938.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (24.257mm,22.955mm)(24.257mm,23.527mm) on Top Overlay And Pad BC 547 4-3(24.003mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.302mil|Location2.X=1980.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.302mil|Location2.X=1980.552mil|Location1.Y=1959.564mil|Location2.Y=1970.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (25.527mm,21.717mm) on Top Overlay And Pad BC 547 4-3(24.003mm,24.511mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961mil|Location1.Y=1827.125mil|Location2.Y=1838.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (24.257mm,20.586mm)(24.257mm,20.987mm) on Top Overlay And Pad BC 547 4-1(24.003mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1947.566mil|Location2.X=1961.511mil|Location1.Y=1891.625mil|Location2.Y=1902.875mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Track (24.257mm,22.955mm)(24.257mm,23.527mm) on Top Overlay And Pad BC 547 4-1(24.003mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.305mil|Location2.X=1980.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.305mil|Location2.X=1980.555mil|Location1.Y=1859.375mil|Location2.Y=1870.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.254mm) Between Text "BC547" (25.527mm,21.717mm) on Top Overlay And Pad BC 547 4-1(24.003mm,21.971mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.801mil|Location2.X=1609.051mil|Location1.Y=1511.287mil|Location2.Y=1522.537mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.801mil|Location2.X=1609.051mil|Location1.Y=1511.287mil|Location2.Y=1522.537mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.252mm &lt; 0.254mm) Between Track (9.627mm,12.94mm)(16.027mm,12.94mm) on Top Overlay And Pad 100K-3(15.327mm,14.01mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.252mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.234mil|Location2.X=1486.484mil|Location1.Y=1766.03mil|Location2.Y=1777.28mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.234mil|Location2.X=1486.484mil|Location1.Y=1766.03mil|Location2.Y=1777.28mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Track (9.627mm,19.71mm)(12.097mm,19.71mm) on Top Overlay And Pad 100K-2(12.827mm,19.01mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.516mil|Location2.X=1534.766mil|Location1.Y=1766.03mil|Location2.Y=1777.28mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.516mil|Location2.X=1534.766mil|Location1.Y=1766.03mil|Location2.Y=1777.28mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Track (13.557mm,19.71mm)(16.027mm,19.71mm) on Top Overlay And Pad 100K-2(12.827mm,19.01mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.391mil|Location2.X=1384.641mil|Location1.Y=1580.604mil|Location2.Y=1591.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.391mil|Location2.X=1384.641mil|Location1.Y=1580.604mil|Location2.Y=1591.854mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.253mm &lt; 0.254mm) Between Track (9.627mm,15.08mm)(9.627mm,19.71mm) on Top Overlay And Pad 100K-1(10.327mm,14.01mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.253mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.391mil|Location2.X=1384.641mil|Location1.Y=1511.293mil|Location2.Y=1522.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.391mil|Location2.X=1384.641mil|Location1.Y=1511.293mil|Location2.Y=1522.543mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.253mm &lt; 0.254mm) Between Track (9.627mm,12.94mm)(16.027mm,12.94mm) on Top Overlay And Pad 100K-1(10.327mm,14.01mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.253mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.369mil|Location2.X=1340.619mil|Location1.Y=2176.431mil|Location2.Y=2187.681mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.369mil|Location2.X=1340.619mil|Location1.Y=2176.431mil|Location2.Y=2187.681mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.128mm &lt; 0.254mm) Between Text "+" (8.001mm,29.972mm) on Top Overlay And Pad LED1-1(8.509mm,29.21mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.128mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1559.369mil|Location2.X=1570.619mil|Location1.Y=2181.431mil|Location2.Y=2192.681mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1559.369mil|Location2.X=1570.619mil|Location1.Y=2181.431mil|Location2.Y=2192.681mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.128mm &lt; 0.254mm) Between Text "+" (13.843mm,30.099mm) on Top Overlay And Pad LED2-1(14.351mm,29.337mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.128mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1964.365mil|Location2.Y=1975.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1964.365mil|Location2.Y=1975.615mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (30.353mm,23.876mm) on Top Overlay And Pad LED4-1(29.337mm,24.765mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.285mil|Location2.X=2192.535mil|Location1.Y=1638.958mil|Location2.Y=1650.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.285mil|Location2.X=2192.535mil|Location1.Y=1638.958mil|Location2.Y=1650.208mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.138mm &lt; 0.254mm) Between Text "-" (30.353mm,15.621mm) on Top Overlay And Pad LED5-2(29.337mm,16.256mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.138mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1729.365mil|Location2.Y=1740.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1729.365mil|Location2.Y=1740.615mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (30.353mm,17.907mm) on Top Overlay And Pad LED5-1(29.337mm,18.796mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.439mil|Location2.X=2192.689mil|Location1.Y=1404.37mil|Location2.Y=1415.62mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.439mil|Location2.X=2192.689mil|Location1.Y=1404.37mil|Location2.Y=1415.62mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.128mm &lt; 0.254mm) Between Text "-" (30.353mm,9.652mm) on Top Overlay And Pad LED6-2(29.337mm,10.414mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.128mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1499.365mil|Location2.Y=1510.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2181.433mil|Location2.X=2192.683mil|Location1.Y=1499.365mil|Location2.Y=1510.615mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (30.353mm,12.065mm) on Top Overlay And Pad LED6-1(29.337mm,12.954mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1919.369mil|Location2.X=1930.619mil|Location1.Y=1087.309mil|Location2.Y=1098.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1919.369mil|Location2.X=1930.619mil|Location1.Y=1087.309mil|Location2.Y=1098.559mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (22.987mm,0.889mm) on Top Overlay And Pad LED7-1(23.749mm,3.175mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1434.369mil|Location2.X=1445.619mil|Location1.Y=1087.309mil|Location2.Y=1098.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1434.369mil|Location2.X=1445.619mil|Location1.Y=1087.309mil|Location2.Y=1098.559mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (10.668mm,0.889mm) on Top Overlay And Pad LED9-1(11.43mm,3.175mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1092.9mil|Location2.X=1104.15mil|Location1.Y=1447.277mil|Location2.Y=1461.487mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1092.9mil|Location2.X=1104.15mil|Location1.Y=1447.277mil|Location2.Y=1461.487mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.165mm &lt; 0.254mm) Between Text "-" (1.27mm,10.795mm) on Top Overlay And Pad LED10-2(3.302mm,11.811mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.165mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1092.311mil|Location2.X=1103.561mil|Location1.Y=1369.365mil|Location2.Y=1380.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1092.311mil|Location2.X=1103.561mil|Location1.Y=1369.365mil|Location2.Y=1380.615mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (1.27mm,8.763mm) on Top Overlay And Pad LED10-1(3.302mm,9.271mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.554mil|Location2.X=1109.804mil|Location1.Y=1698.487mil|Location2.Y=1712.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.554mil|Location2.X=1109.804mil|Location1.Y=1698.487mil|Location2.Y=1712.181mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.208mm &lt; 0.254mm) Between Text "-" (1.397mm,17.145mm) on Top Overlay And Pad LED11-2(3.429mm,18.288mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.208mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1088.554mil|Location2.X=1099.804mil|Location1.Y=1948.487mil|Location2.Y=1962.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1088.554mil|Location2.X=1099.804mil|Location1.Y=1948.487mil|Location2.Y=1962.181mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.208mm &lt; 0.254mm) Between Text "-" (1.143mm,23.495mm) on Top Overlay And Pad LED12-2(3.175mm,24.638mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.208mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1087.311mil|Location2.X=1098.561mil|Location1.Y=1869.365mil|Location2.Y=1880.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1087.311mil|Location2.X=1098.561mil|Location1.Y=1869.365mil|Location2.Y=1880.615mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "+" (1.143mm,21.463mm) on Top Overlay And Pad LED12-1(3.175mm,22.098mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1374.375mil|Location2.Y=1385.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1374.375mil|Location2.Y=1385.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (24.003mm,9.652mm)(24.232mm,9.652mm) on Top Overlay And Pad 1K-1(25.273mm,9.652mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1374.375mil|Location2.Y=1385.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1374.375mil|Location2.Y=1385.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (18.694mm,9.652mm)(18.923mm,9.652mm) on Top Overlay And Pad 1K-2(17.653mm,9.652mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1744.375mil|Location2.Y=1755.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1744.375mil|Location2.Y=1755.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (18.694mm,19.05mm)(18.923mm,19.05mm) on Top Overlay And Pad 100OHM 1-1(17.653mm,19.05mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1744.375mil|Location2.Y=1755.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1744.375mil|Location2.Y=1755.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (24.003mm,19.05mm)(24.232mm,19.05mm) on Top Overlay And Pad 100OHM 1-2(25.273mm,19.05mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1469.375mil|Location2.Y=1480.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1469.375mil|Location2.Y=1480.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (24.003mm,12.065mm)(24.232mm,12.065mm) on Top Overlay And Pad 100 OHM 2-1(25.273mm,12.065mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1469.375mil|Location2.Y=1480.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1469.375mil|Location2.Y=1480.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (18.694mm,12.065mm)(18.923mm,12.065mm) on Top Overlay And Pad 100 OHM 2-2(17.653mm,12.065mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1659.375mil|Location2.Y=1670.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1659.375mil|Location2.Y=1670.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (24.003mm,16.891mm)(24.232mm,16.891mm) on Top Overlay And Pad 100 OHM 3-1(25.273mm,16.891mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1659.375mil|Location2.Y=1670.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1659.375mil|Location2.Y=1670.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (18.694mm,16.891mm)(18.923mm,16.891mm) on Top Overlay And Pad 100 OHM 3-2(17.653mm,16.891mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1569.375mil|Location2.Y=1580.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.073mil|Location2.X=1967.323mil|Location1.Y=1569.375mil|Location2.Y=1580.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (24.003mm,14.605mm)(24.232mm,14.605mm) on Top Overlay And Pad 100 OHM 4-1(25.273mm,14.605mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1569.375mil|Location2.Y=1580.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.677mil|Location2.X=1733.927mil|Location1.Y=1569.375mil|Location2.Y=1580.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.191mm &lt; 0.254mm) Between Track (18.694mm,14.605mm)(18.923mm,14.605mm) on Top Overlay And Pad 100 OHM 4-2(17.653mm,14.605mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2127.634mil|Location2.X=2138.884mil|Location1.Y=1104.375mil|Location2.Y=1115.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2127.634mil|Location2.X=2138.884mil|Location1.Y=1104.375mil|Location2.Y=1115.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.22mm &lt; 0.254mm) Between Track (28.575mm,1.524mm)(28.575mm,6.604mm) on Top Overlay And Pad HEADER-2(29.845mm,2.794mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2211.116mil|Location2.X=2222.366mil|Location1.Y=1104.375mil|Location2.Y=1115.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2211.116mil|Location2.X=2222.366mil|Location1.Y=1104.375mil|Location2.Y=1115.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.22mm &lt; 0.254mm) Between Track (31.115mm,1.524mm)(31.115mm,6.604mm) on Top Overlay And Pad HEADER-2(29.845mm,2.794mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2169.375mil|Location2.X=2180.625mil|Location1.Y=1062.634mil|Location2.Y=1073.884mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2169.375mil|Location2.X=2180.625mil|Location1.Y=1062.634mil|Location2.Y=1073.884mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.22mm &lt; 0.254mm) Between Track (28.575mm,1.524mm)(31.115mm,1.524mm) on Top Overlay And Pad HEADER-2(29.845mm,2.794mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.22mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDYEPNGSH0WMFCJAGUYUPWL4AEZH3YJTIAZ0G3VEH50QXTKMOJPIFI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1560.559mil|Location2.X=1568.226mil|Location1.Y=1445.896mil|Location2.Y=1453.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1560.559mil|Location2.X=1568.226mil|Location1.Y=1445.896mil|Location2.Y=1453.562mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "LDR" (11.557mm,10.287mm) on Top Overlay And Arc (12.7mm,9.398mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1439.024mil|Location2.X=1446.69mil|Location1.Y=1284.67mil|Location2.Y=1292.336mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1439.024mil|Location2.X=1446.69mil|Location1.Y=1284.67mil|Location2.Y=1292.336mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "7mm LDR" (11.303mm,7.239mm) on Top Overlay And Arc (12.7mm,9.398mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.717mil|Location2.X=1338.266mil|Location1.Y=2228.599mil|Location2.Y=2239.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.717mil|Location2.X=1338.266mil|Location1.Y=2228.599mil|Location2.Y=2239.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0mm &lt; 0.254mm) Between Text "+" (8.001mm,29.972mm) on Top Overlay And Arc (9.779mm,29.21mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1556.717mil|Location2.X=1568.266mil|Location1.Y=2233.599mil|Location2.Y=2244.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1556.717mil|Location2.X=1568.266mil|Location1.Y=2233.599mil|Location2.Y=2244.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0mm &lt; 0.254mm) Between Text "+" (13.843mm,30.099mm) on Top Overlay And Arc (15.621mm,29.337mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1794.249mil|Location2.X=1801.916mil|Location1.Y=2234.758mil|Location2.Y=2242.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1794.249mil|Location2.X=1801.916mil|Location1.Y=2234.758mil|Location2.Y=2242.425mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "+" (19.812mm,30.099mm) on Top Overlay And Arc (21.463mm,29.21mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.859mil|Location2.X=1964.109mil|Location1.Y=2150.749mil|Location2.Y=2161.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.859mil|Location2.X=1964.109mil|Location1.Y=2150.749mil|Location2.Y=2161.999mil|Absolute=True">Silk To Silk Clearance Constraint: (0.22mm &lt; 0.254mm) Between Text "DARK
+SENSITIVE
+CIRCUIT" (21.717mm,25.781mm) on Top Overlay And Arc (21.463mm,29.21mm) on Top Overlay Silk Text to Silk Clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2239.76mil|Location2.X=2247.426mil|Location1.Y=1874.247mil|Location2.Y=1881.914mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2239.76mil|Location2.X=2247.426mil|Location1.Y=1874.247mil|Location2.Y=1881.914mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "-" (30.48mm,21.59mm) on Top Overlay And Arc (29.337mm,23.495mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1965.684mil|Location2.Y=1978.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1965.684mil|Location2.Y=1978.694mil|Absolute=True">Silk To Silk Clearance Constraint: (0.065mm &lt; 0.254mm) Between Text "+" (30.353mm,23.876mm) on Top Overlay And Arc (29.337mm,23.495mm) on Top Overlay Silk Text to Silk Clearance [0.065mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.83mil|Location2.X=2246.08mil|Location1.Y=1636.288mil|Location2.Y=1648.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.83mil|Location2.X=2246.08mil|Location1.Y=1636.288mil|Location2.Y=1648.428mil|Absolute=True">Silk To Silk Clearance Constraint: (0.065mm &lt; 0.254mm) Between Text "-" (30.353mm,15.621mm) on Top Overlay And Arc (29.337mm,17.526mm) on Top Overlay Silk Text to Silk Clearance [0.065mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1730.684mil|Location2.Y=1743.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1730.684mil|Location2.Y=1743.694mil|Absolute=True">Silk To Silk Clearance Constraint: (0.065mm &lt; 0.254mm) Between Text "+" (30.353mm,17.907mm) on Top Overlay And Arc (29.337mm,17.526mm) on Top Overlay Silk Text to Silk Clearance [0.065mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2235.392mil|Location2.X=2243.059mil|Location1.Y=1403.507mil|Location2.Y=1411.174mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2235.392mil|Location2.X=2243.059mil|Location1.Y=1403.507mil|Location2.Y=1411.174mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "-" (30.353mm,9.652mm) on Top Overlay And Arc (29.337mm,11.684mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1500.684mil|Location2.Y=1513.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2234.835mil|Location2.X=2246.085mil|Location1.Y=1500.684mil|Location2.Y=1513.694mil|Absolute=True">Silk To Silk Clearance Constraint: (0.065mm &lt; 0.254mm) Between Text "+" (30.353mm,12.065mm) on Top Overlay And Arc (29.337mm,11.684mm) on Top Overlay Silk Text to Silk Clearance [0.065mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1807.056mil|Location2.X=1818.306mil|Location1.Y=1057.831mil|Location2.Y=1069.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1807.056mil|Location2.X=1818.306mil|Location1.Y=1057.831mil|Location2.Y=1069.421mil|Absolute=True">Silk To Silk Clearance Constraint: (0.233mm &lt; 0.254mm) Between Text "-" (20.828mm,1.016mm) on Top Overlay And Arc (22.479mm,3.175mm) on Top Overlay Silk Text to Silk Clearance [0.233mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1922.697mil|Location2.X=1935.232mil|Location1.Y=1032.713mil|Location2.Y=1043.963mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1922.697mil|Location2.X=1935.232mil|Location1.Y=1032.713mil|Location2.Y=1043.963mil|Absolute=True">Silk To Silk Clearance Constraint: (0.124mm &lt; 0.254mm) Between Text "+" (22.987mm,0.889mm) on Top Overlay And Arc (22.479mm,3.175mm) on Top Overlay Silk Text to Silk Clearance [0.124mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1556.929mil|Location2.X=1568.179mil|Location1.Y=1068.045mil|Location2.Y=1080.296mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1556.929mil|Location2.X=1568.179mil|Location1.Y=1068.045mil|Location2.Y=1080.296mil|Absolute=True">Silk To Silk Clearance Constraint: (0.211mm &lt; 0.254mm) Between Text "-" (14.478mm,1.27mm) on Top Overlay And Arc (16.256mm,3.302mm) on Top Overlay Silk Text to Silk Clearance [0.211mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.58mil|Location2.X=1689.249mil|Location1.Y=1034.671mil|Location2.Y=1045.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.58mil|Location2.X=1689.249mil|Location1.Y=1034.671mil|Location2.Y=1045.921mil|Absolute=True">Silk To Silk Clearance Constraint: (0.01mm &lt; 0.254mm) Between Text "+" (16.764mm,0.889mm) on Top Overlay And Arc (16.256mm,3.302mm) on Top Overlay Silk Text to Silk Clearance [0.01mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1316.929mil|Location2.X=1328.179mil|Location1.Y=1063.045mil|Location2.Y=1075.296mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1316.929mil|Location2.X=1328.179mil|Location1.Y=1063.045mil|Location2.Y=1075.296mil|Absolute=True">Silk To Silk Clearance Constraint: (0.211mm &lt; 0.254mm) Between Text "-" (8.382mm,1.143mm) on Top Overlay And Arc (10.16mm,3.175mm) on Top Overlay Silk Text to Silk Clearance [0.211mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1437.697mil|Location2.X=1450.232mil|Location1.Y=1032.713mil|Location2.Y=1043.963mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1437.697mil|Location2.X=1450.232mil|Location1.Y=1032.713mil|Location2.Y=1043.963mil|Absolute=True">Silk To Silk Clearance Constraint: (0.124mm &lt; 0.254mm) Between Text "+" (10.668mm,0.889mm) on Top Overlay And Arc (10.16mm,3.175mm) on Top Overlay Silk Text to Silk Clearance [0.124mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1361.607mil|Location2.X=1374.926mil|Location1.Y=1224.163mil|Location2.Y=1235.413mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1361.607mil|Location2.X=1374.926mil|Location1.Y=1224.163mil|Location2.Y=1235.413mil|Absolute=True">Silk To Silk Clearance Constraint: (0.023mm &lt; 0.254mm) Between Text "A.I. PCB" (0.889mm,5.969mm) on Top Overlay And Arc (10.16mm,3.175mm) on Top Overlay Silk Text to Silk Clearance [0.023mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1037.715mil|Location2.X=1048.965mil|Location1.Y=1452.695mil|Location2.Y=1465.054mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1037.715mil|Location2.X=1048.965mil|Location1.Y=1452.695mil|Location2.Y=1465.054mil|Absolute=True">Silk To Silk Clearance Constraint: (0.124mm &lt; 0.254mm) Between Text "-" (1.27mm,10.795mm) on Top Overlay And Arc (3.302mm,10.541mm) on Top Overlay Silk Text to Silk Clearance [0.124mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1037.719mil|Location2.X=1048.969mil|Location1.Y=1363.978mil|Location2.Y=1377.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1037.719mil|Location2.X=1048.969mil|Location1.Y=1363.978mil|Location2.Y=1377.286mil|Absolute=True">Silk To Silk Clearance Constraint: (0.124mm &lt; 0.254mm) Between Text "+" (1.27mm,8.763mm) on Top Overlay And Arc (3.302mm,10.541mm) on Top Overlay Silk Text to Silk Clearance [0.124mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1038.641mil|Location2.X=1049.891mil|Location1.Y=1624.549mil|Location2.Y=1638.254mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1038.641mil|Location2.X=1049.891mil|Location1.Y=1624.549mil|Location2.Y=1638.254mil|Absolute=True">Silk To Silk Clearance Constraint: (0.061mm &lt; 0.254mm) Between Text "+" (1.27mm,15.367mm) on Top Overlay And Arc (3.429mm,17.018mm) on Top Overlay Silk Text to Silk Clearance [0.061mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1041.581mil|Location2.X=1052.831mil|Location1.Y=1702.774mil|Location2.Y=1715.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1041.581mil|Location2.X=1052.831mil|Location1.Y=1702.774mil|Location2.Y=1715.33mil|Absolute=True">Silk To Silk Clearance Constraint: (0.178mm &lt; 0.254mm) Between Text "-" (1.397mm,17.145mm) on Top Overlay And Arc (3.429mm,17.018mm) on Top Overlay Silk Text to Silk Clearance [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1033.911mil|Location2.X=1045.161mil|Location1.Y=1864.532mil|Location2.Y=1877.541mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1033.911mil|Location2.X=1045.161mil|Location1.Y=1864.532mil|Location2.Y=1877.541mil|Absolute=True">Silk To Silk Clearance Constraint: (0.064mm &lt; 0.254mm) Between Text "+" (1.143mm,21.463mm) on Top Overlay And Arc (3.175mm,23.368mm) on Top Overlay Silk Text to Silk Clearance [0.064mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031.581mil|Location2.X=1042.831mil|Location1.Y=1952.774mil|Location2.Y=1965.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031.581mil|Location2.X=1042.831mil|Location1.Y=1952.774mil|Location2.Y=1965.33mil|Absolute=True">Silk To Silk Clearance Constraint: (0.178mm &lt; 0.254mm) Between Text "-" (1.143mm,23.495mm) on Top Overlay And Arc (3.175mm,23.368mm) on Top Overlay Silk Text to Silk Clearance [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1416.359mil|Location2.X=1427.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1416.359mil|Location2.X=1427.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.001mm &lt; 0.254mm) Between Text "BC547" (10.668mm,21.717mm) on Top Overlay And Track (10.795mm,21.146mm)(10.795mm,25.336mm) on Top Overlay Silk Text to Silk Clearance [0.001mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1611.359mil|Location2.X=1622.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1611.359mil|Location2.X=1622.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.001mm &lt; 0.254mm) Between Text "BC547" (15.621mm,21.717mm) on Top Overlay And Track (15.748mm,21.146mm)(15.748mm,25.336mm) on Top Overlay Silk Text to Silk Clearance [0.001mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1811.359mil|Location2.X=1822.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1811.359mil|Location2.X=1822.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.001mm &lt; 0.254mm) Between Text "BC547" (20.701mm,21.717mm) on Top Overlay And Track (20.828mm,21.146mm)(20.828mm,25.336mm) on Top Overlay Silk Text to Silk Clearance [0.001mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2001.359mil|Location2.X=2012.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2001.359mil|Location2.X=2012.609mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.001mm &lt; 0.254mm) Between Text "BC547" (25.527mm,21.717mm) on Top Overlay And Track (25.654mm,21.146mm)(25.654mm,25.336mm) on Top Overlay Silk Text to Silk Clearance [0.001mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1820.935mil|Location2.X=1832.185mil|Location1.Y=1399.054mil|Location2.Y=1410.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1820.935mil|Location2.X=1832.185mil|Location1.Y=1399.054mil|Location2.Y=1410.304mil|Absolute=True">Silk To Silk Clearance Constraint: (0.07mm &lt; 0.254mm) Between Text "1k" (20.828mm,9.144mm) on Top Overlay And Track (18.923mm,10.414mm)(24.003mm,10.414mm) on Top Overlay Silk Text to Silk Clearance [0.07mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1814.375mil|Location2.X=1825.625mil|Location1.Y=1349.375mil|Location2.Y=1360.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1814.375mil|Location2.X=1825.625mil|Location1.Y=1349.375mil|Location2.Y=1360.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.054mm &lt; 0.254mm) Between Text "1k" (20.828mm,9.144mm) on Top Overlay And Track (18.923mm,8.89mm)(24.003mm,8.89mm) on Top Overlay Silk Text to Silk Clearance [0.054mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1719.375mil|Location2.Y=1730.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1719.375mil|Location2.Y=1730.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.054mm &lt; 0.254mm) Between Text "100" (19.939mm,18.542mm) on Top Overlay And Track (18.923mm,18.288mm)(24.003mm,18.288mm) on Top Overlay Silk Text to Silk Clearance [0.054mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1769.054mil|Location2.Y=1780.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1769.054mil|Location2.Y=1780.304mil|Absolute=True">Silk To Silk Clearance Constraint: (0.07mm &lt; 0.254mm) Between Text "100" (19.939mm,18.542mm) on Top Overlay And Track (18.923mm,19.812mm)(24.003mm,19.812mm) on Top Overlay Silk Text to Silk Clearance [0.07mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1494.054mil|Location2.Y=1505.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1494.054mil|Location2.Y=1505.304mil|Absolute=True">Silk To Silk Clearance Constraint: (0.07mm &lt; 0.254mm) Between Text "100" (19.939mm,11.557mm) on Top Overlay And Track (18.923mm,12.827mm)(24.003mm,12.827mm) on Top Overlay Silk Text to Silk Clearance [0.07mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1444.375mil|Location2.Y=1455.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1444.375mil|Location2.Y=1455.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.054mm &lt; 0.254mm) Between Text "100" (19.939mm,11.557mm) on Top Overlay And Track (18.923mm,11.303mm)(24.003mm,11.303mm) on Top Overlay Silk Text to Silk Clearance [0.054mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1684.054mil|Location2.Y=1695.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1684.054mil|Location2.Y=1695.304mil|Absolute=True">Silk To Silk Clearance Constraint: (0.07mm &lt; 0.254mm) Between Text "100" (19.939mm,16.383mm) on Top Overlay And Track (18.923mm,17.653mm)(24.003mm,17.653mm) on Top Overlay Silk Text to Silk Clearance [0.07mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1634.375mil|Location2.Y=1645.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1634.375mil|Location2.Y=1645.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.054mm &lt; 0.254mm) Between Text "100" (19.939mm,16.383mm) on Top Overlay And Track (18.923mm,16.129mm)(24.003mm,16.129mm) on Top Overlay Silk Text to Silk Clearance [0.054mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1594.054mil|Location2.Y=1605.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.935mil|Location2.X=1797.185mil|Location1.Y=1594.054mil|Location2.Y=1605.304mil|Absolute=True">Silk To Silk Clearance Constraint: (0.07mm &lt; 0.254mm) Between Text "100" (19.939mm,14.097mm) on Top Overlay And Track (18.923mm,15.367mm)(24.003mm,15.367mm) on Top Overlay Silk Text to Silk Clearance [0.07mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1544.375mil|Location2.Y=1555.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=1544.375mil|Location2.Y=1555.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.054mm &lt; 0.254mm) Between Text "100" (19.939mm,14.097mm) on Top Overlay And Track (18.923mm,13.843mm)(24.003mm,13.843mm) on Top Overlay Silk Text to Silk Clearance [0.054mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2169.369mil|Location2.X=2180.619mil|Location1.Y=1261.342mil|Location2.Y=1272.592mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2169.369mil|Location2.X=2180.619mil|Location1.Y=1261.342mil|Location2.Y=1272.592mil|Absolute=True">Silk To Silk Clearance Constraint: (0.154mm &lt; 0.254mm) Between Text "+" (29.337mm,6.731mm) on Top Overlay And Track (28.575mm,6.604mm)(31.115mm,6.604mm) on Top Overlay Silk Text to Silk Clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2262.893mil|Location2.X=2274.143mil|Location1.Y=2163.053mil|Location2.Y=2174.303mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\User\Desktop\2.PCB\2.CIRCUITS\to do\DARK SENSITIVE 12LED\PCB_Project\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2262.893mil|Location2.X=2274.143mil|Location1.Y=2163.053mil|Location2.Y=2174.303mil|Absolute=True">Silk To Silk Clearance Constraint: (0.075mm &lt; 0.254mm) Between Text "DARK
+SENSITIVE
+CIRCUIT" (21.717mm,25.781mm) on Top Overlay And Track (32.385mm,0.127mm)(32.385mm,32.385mm) on Top Overlay Silk Text to Silk Clearance [0.075mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

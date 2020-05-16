@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: PCB1.PcbDoc   2019-08-03  5:51:48 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : PCB1.TXT
+ASCII RectHoles File : PCB1-RectHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      20mil (0.5mm)                                             Rectangle         4         PTH        8.39inch (213.17mm)
+T2      28mil (0.7mm)                                             Round             380       PTH        71.93inch (1826.98mm)
+T3      28mil (0.7mm)                                             Rectangle         4         PTH        17.69inch (449.43mm)
+T4      32mil (0.8mm)                                             Round             21        PTH        12.22inch (310.35mm)
+T5      35mil (0.9mm)                                             Round             22        PTH        15.47inch (392.98mm)
+T6      39mil (1mm)                                               Rectangle         2         PTH        12.70inch (322.56mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              433
+
+Total Processing Time (hh:mm:ss) : 00:00:00

@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=Net1K_1 Pin=1K-1
+Removed Pin From Net: NetName=Net100K PRESET_1 Pin=100K PRESET-1
+Removed Pin From Net: NetName=Net1K_1 Pin=100K PRESET-3
+Added Pin To Net: NetName=Net1K_1 Pin=1K-1
+Added Pin To Net: NetName=Net100K PRESET_1 Pin=100K PRESET-3
+Added Pin To Net: NetName=Net1K_1 Pin=LED-1
+Change Net Name : Old Net Name=Net100K PRESET_1 New Net Name=Net100K PRESET_2
+Added Member To Class: ClassName=Sheet1 Member=Component 1K Res1
+Added Room: Name=Sheet1

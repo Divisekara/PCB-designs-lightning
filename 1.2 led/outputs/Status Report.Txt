@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Free Documents]
+   Generated File[2led_v2.TXT]
+   Generated File[2led_v2-RectHoles.TXT]
+   Generated File[2led_v2.LDP]
+   Generated File[2led_v2.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 10:30:57 AM On 2019-08-02

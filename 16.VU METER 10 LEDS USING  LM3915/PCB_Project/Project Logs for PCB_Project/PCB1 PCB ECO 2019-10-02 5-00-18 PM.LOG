@@ -1,0 +1,5 @@
+Change Component Comment : Designator=U? Old Comment=LM3915N-1 New Comment=LM3915N
+Change Component Designator: OldDesignator=P? NewDesignator=closing jumper
+Change Component Designator: OldDesignator=U? NewDesignator=LM3915N
+Change Net Name : Old Net Name=NetP?_2 New Net Name=Netclosing jumper_2
+Added Room: Name=Sheet1
